@@ -1,7 +1,7 @@
 import jieba
 import re
 import numpy as np
-import sys
+# import sys
 
 
 # 对文本进行预处理，使文本仅保留中文
@@ -48,22 +48,24 @@ def consin(vec1, vec2):
 
 
 if __name__ == '__main__':
-    # 输入论文原文路径、查重论文路径以及答案文本存储路径
-    try:
+    ''' # 输入论文原文路径、查重论文路径以及答案文本存储路径
+try:
         file1_path = sys.argv[1]
         file2_path = sys.argv[2]
         result_path = sys.argv[3]
     except IndexError:
         print("输入错误，请检查文件路径")
-
-
+'''
+file1_path = r'C:\Users\Lincoln\Desktop\python测试与结果文件\orig.txt'
+file2_path = r'C:\Users\Lincoln\Desktop\python测试与结果文件\orig_0.8_add.txt'
+result_path = r'C:\Users\Lincoln\Desktop\python测试与结果文件\答案文本.txt'
 # 对源文本以及查重文本进行预处理
-    with open(file1_path, 'r', encoding='UTF-8') as file1:
-        s1 = file1.read()
-        s1 = yuchuli(s1)
-    with open(file2_path, 'r', encoding='UTF-8') as file2:
-        s2 = file2.read()
-        s2 = yuchuli(s2)
+with open(file1_path, 'r', encoding='UTF-8') as file1:
+    s1 = file1.read()
+    s1 = yuchuli(s1)
+with open(file2_path, 'r', encoding='UTF-8') as file2:
+    s2 = file2.read()
+    s2 = yuchuli(s2)
 
 # 进行文本向量和余弦计算
 v1, v2 = get_vector(s1, s2)
@@ -76,3 +78,8 @@ print("文章重复率运算结果为:", b)
 file = open(result_path, 'w')
 file.write(str(b))
 file.close()
+print(s1)
+print(s2)
+print(v1)
+print(v2)
+print(a)
