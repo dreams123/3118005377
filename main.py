@@ -48,11 +48,13 @@ def consin(vec1, vec2):
 
 
 if __name__ == '__main__':
-    # 输入论文原文路径以及查重论文路径
-    file1_path = sys.argv[1]
-    file2_path = sys.argv[2]
-
-
+    # 输入论文原文路径、查重论文路径以及答案文本存储路径
+    try:
+        file1_path = sys.argv[1]
+        file2_path = sys.argv[2]
+        result_path = sys.argv[3]
+    except IndexError:
+        print("输入错误，请检查文件路径")
 # 对源文本以及查重文本进行预处理
 with open(file1_path, 'r', encoding='UTF-8') as file1:
     s1 = file1.read()
@@ -67,22 +69,8 @@ a = consin(v1, v2)
 b = round(a, 2)
 print("文章重复率运算结果为:", b)
 
-result_path = sys.argv[3]  # 新创建的答案文件文件的存放路径
+
+# 新创建的答案文件文件的存放路径
 file = open(result_path, 'w')
 file.write(str(b))
 file.close()
-
-try:
-    file1_path == ' '
-except IndexError:
-    print("输入路径中不存在指定源文本")
-
-try:
-    file2_path == ' '
-except IndexError:
-    print("输入路径中不存在指定查重文本")
-
-try:
-    result_path == ' '
-except IndexError:
-    print("输出文件中未查到指定答案文本")
