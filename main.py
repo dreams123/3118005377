@@ -56,7 +56,6 @@ if __name__ == '__main__':
     except IndexError:
         print("输入错误，请检查文件路径")
 
-
 # 对源文本以及查重文本进行预处理
     with open(file1_path, 'r', encoding='UTF-8') as file1:
         s1 = file1.read()
@@ -70,7 +69,6 @@ v1, v2 = get_vector(s1, s2)
 a = consin(v1, v2)
 b = round(a, 2)
 print("文章重复率运算结果为:", b)
-
 
 # 新创建的答案文件文件的存放路径
 file = open(result_path, 'w')
