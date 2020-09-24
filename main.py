@@ -67,7 +67,22 @@ a = consin(v1, v2)
 b = round(a, 2)
 print("文章重复率运算结果为:", b)
 
-result_path = sys.argv[3]  # 新创建的txt文件的存放路径
+result_path = sys.argv[3]  # 新创建的答案文件文件的存放路径
 file = open(result_path, 'w')
 file.write(str(b))
 file.close()
+
+try:
+    file1_path == ' '
+except IndexError:
+    print("输入路径中不存在指定源文本")
+
+try:
+    file2_path == ' '
+except IndexError:
+    print("输入路径中不存在指定查重文本")
+
+try:
+    result_path == ' '
+except IndexError:
+    print("输出文件中未查到指定答案文本")
